@@ -10,7 +10,9 @@ client = openai.OpenAI(
 )
 
 app = Flask(__name__,
-    template_folder='templates'
+    template_folder='templates',
+    static_url_path='',
+    static_folder='static'
 )
 
 def get_colors(msg):
@@ -49,9 +51,6 @@ def prompt_to_palette():
     query = request.form.get("query")
     colors = get_colors(query)
     return {"colors": colors}
-    # OPEN AI COMPLETION CALL
-
-    # RETURN LIST OF COLORS
 
 if __name__=="__main__":
     app.run(debug=True)
